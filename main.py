@@ -33,14 +33,14 @@ def main():
     ax.set_title(r"Simulation")
 
     def animate(t):
-        y1 = A * np.cos(10 * t / FPS - 12 * x)
-        y2 = A * np.cos(8 * t / FPS - 11 * x)
+        y1 = A * np.cos(w1 * t / FPS - k1 * x)
+        y2 = A * np.cos(w2 * t / FPS - k2 * x)
         y = y1 + y2
 
         group_vel.set_data(t * vg / FPS % (N * np.pi), 2 * A)
 
-        phase_vel1.set_data(t * vp1 / FPS % (N * np.pi), 0)
-        phase_vel2.set_data(t * vp2 / FPS % (N * np.pi), 0)
+        phase_vel1.set_data(t * vp1 / FPS % (N * np.pi), A * np.cos(w1 * t / FPS))
+        phase_vel2.set_data(t * vp2 / FPS % (N * np.pi), A * np.cos(w2 * t / FPS))
 
         line.set_data(x, y)
 
