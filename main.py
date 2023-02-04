@@ -33,7 +33,7 @@ def main():
     x = np.arange(0, N * np.pi, 0.01)
 
     figure, ax = plt.subplots()
-    line, = ax.plot([], [], lw=2, color='purple', label='y(x, t) = y_1 + y_2')
+    line, = ax.plot([], [], lw=1.5, color='purple', label='y(x, t) = y_1 + y_2')
     line1, = ax.plot([], [], lw=0.67, color='blue', alpha=0.2, label='y_1(x, t)')
     line2, = ax.plot([], [], lw=0.67, color='red', alpha=0.2, label='y_2(x, t)')
 
