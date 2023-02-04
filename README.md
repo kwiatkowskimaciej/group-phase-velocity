@@ -1,0 +1,1 @@
+# fogt-predkosc-grupowa-fazowa
