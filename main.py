@@ -98,7 +98,7 @@ case_dict = {
 }
 
 root.resizable(False, False)
-root.title('Phase and Group Velocity')
+root.title('Phase and Group Velocities')
 
 mainframe = ttk.Frame(root, padding="20 20 20 20")
 mainframe.grid(column=0, row=0)
@@ -165,6 +165,6 @@ def parameters_change(event):
     k2_entry.insert(0, parameters[3])
 
 
+root.bind('<Return>', lambda event=None: Submit.invoke())
 parameters_cb.bind('<<ComboboxSelected>>', parameters_change)
-
 root.mainloop()
