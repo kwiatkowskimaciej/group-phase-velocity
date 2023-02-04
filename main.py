@@ -85,6 +85,7 @@ def main():
 
 
 root = Tk()
+root.option_add("*Font", "Arial 20")
 
 case_dict = {
     "Group Velocity = Phase Velocity": [3, 2, 3, 2],
