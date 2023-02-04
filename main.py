@@ -5,23 +5,46 @@ import matplotlib.animation as animation
 
 def main():
     FPS = 60
+    N = 4
 
-    x = np.arange(0, 4 * np.pi, 0.01)
+    A = 1
+    w1 = 10
+    k1 = 12
+    w2 = 8
+    k2 = 11
+
+    vp1 = w1 / k1
+    vp2 = w2 / k2
+
+    vg = (w2 - w1) / (k2 - k1)
+
+    x = np.arange(0, N * np.pi, 0.01)
 
     figure, ax = plt.subplots()
-    line, = ax.plot([], [], lw=2)
+    line, = ax.plot([], [], lw=2, color='blue')
+
+    group_vel, = ax.plot([], [], marker='o', color='red')
+    group_vel.set_data(0, 2 * A)
+    phase_vel1, = ax.plot([], [], marker='o', color='green')
+    phase_vel2, = ax.plot([], [], marker='o', color='orange')
 
     ax.set_ylim(-4, 4)
-    ax.set_xlim(0, 4 * np.pi)
+    ax.set_xlim(0, N * np.pi)
     ax.set_title(r"Simulation")
 
     def animate(t):
-        y1 = 1 * np.cos(10 * t / FPS - 12 * x)
-        y2 = 1 * np.cos(8 * t / FPS - 11 * x)
+        y1 = A * np.cos(10 * t / FPS - 12 * x)
+        y2 = A * np.cos(8 * t / FPS - 11 * x)
         y = y1 + y2
+
+        group_vel.set_data(t * vg / FPS % (N * np.pi), 2 * A)
+
+        phase_vel1.set_data(t * vp1 / FPS % (N * np.pi), 0)
+        phase_vel2.set_data(t * vp2 / FPS % (N * np.pi), 0)
+
         line.set_data(x, y)
 
-        return line,
+        return line, group_vel, phase_vel1, phase_vel2
 
     wave = animation.FuncAnimation(figure, animate, interval=1000 / FPS, blit=True)
 
