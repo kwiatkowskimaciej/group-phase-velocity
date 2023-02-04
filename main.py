@@ -26,16 +26,16 @@ def main():
 
     vg = (w2 - w1) / (k2 - k1)
 
-    lbd1 = 2 * np.pi / k1
-    lbd2 = 2 * np.pi / k2
+    #lbd1 = 2 * np.pi / k1
+    #lbd2 = 2 * np.pi / k2
 
-    lbd = (lbd1 + lbd2) / 2
-    dlbd = np.abs(lbd1 - lbd)
+    #lbd = (lbd1 + lbd2) / 2
+    #dlbd = np.abs(lbd1 - lbd)
 
-    lbd_env = lbd**2 / dlbd
-    v_env = vg
-    k_env = 2 * np.pi / lbd_env
-    w_env = v_env * k_env
+    #lbd_env = lbd**2 / dlbd
+    #v_env = vg
+    #k_env = 2 * np.pi / lbd_env
+    #w_env = v_env * k_env
 
     x = np.arange(0, N * np.pi, 0.01)
 
@@ -62,7 +62,8 @@ def main():
         y2 = A * np.cos(w2 * t / FPS - k2 * x)
         y = y1 + y2
 
-        env = 2 * A * np.cos(w_env * t / FPS - k_env * x)
+        #env = 2 * A * np.cos(w_env * t / FPS - k_env * x)
+        env = 2 * A * np.cos((w1 * t / FPS - w2 * t / FPS - k1 * x + k2 * x) / 2)
 
         line.set_data(x, y)
 
