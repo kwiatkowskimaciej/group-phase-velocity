@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 
 def main():
@@ -11,10 +12,27 @@ def main():
 
     A = 1
 
-    w1 = int(w1_value.get())
-    w2 = int(w2_value.get())
-    k1 = int(k1_value.get())
-    k2 = int(k2_value.get())
+    wrong_values = ""
+    try:
+        w1 = int(w1_value.get())
+    except ValueError:
+        wrong_values += "w1, "
+    try:
+        w2 = int(w2_value.get())
+    except ValueError:
+        wrong_values += "w2, "
+    try:
+        k1 = int(k1_value.get())
+    except ValueError:
+        wrong_values += "k1, "
+    try:
+        k2 = int(k2_value.get())
+    except ValueError:
+        wrong_values += "k2, "
+
+    if len(wrong_values) > 0:
+        messagebox.showinfo("Wrong data", f"Enter the correct data for {wrong_values[:-2]}!")
+        return
 
     vp1 = w1 / k1
     vp2 = w2 / k2
