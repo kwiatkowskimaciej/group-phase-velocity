@@ -34,7 +34,7 @@ def main():
         messagebox.showinfo("Wrong data", f"Enter the correct data for {wrong_values[:-2]}!")
         return
 
-    vp1 = w1 / k1
+    vp1 = w1 / k1 #czestosc katowa drgan/wektor falowy
     vp2 = w2 / k2
 
     vg = (w2 - w1) / (k2 - k1)
