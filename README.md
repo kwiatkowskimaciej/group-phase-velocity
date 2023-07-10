@@ -3,4 +3,4 @@
 
 It's a python application that displays an animation of group and phase velocity. It was made for Physics lecture.
 
-![Animation](animation.PNG)
+![Animation](./animation.png)
